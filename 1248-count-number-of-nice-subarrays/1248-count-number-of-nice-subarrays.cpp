@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numberOfSubarrays(vector<int>& n, int k) {
-        map<int,int> mp;
+        unordered_map<int,int> mp;
         int sum = 0;
         mp[0] = 1;
         int c = 0;
