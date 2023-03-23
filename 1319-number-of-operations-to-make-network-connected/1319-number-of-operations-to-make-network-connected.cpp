@@ -1,20 +1,21 @@
 class Solution {
 public:
     void bfs(int n,vector<int>&visit,vector<vector<int>>&adj){
-        queue<int>q;
-        q.push(n);
+        // queue<int>q;
+        // q.push(n);
         visit[n] = 1;
         
-        while(!q.empty()){
-            int x = q.front();
-            q.pop();
-            for(auto i: adj[x]){
+        // while(!q.empty()){
+            // int x = q.front();
+            // q.pop();
+            for(auto i: adj[n]){
                 if(!visit[i]){
                     visit[i] = 1;
-                    q.push(i);
+                    bfs(i,visit,adj);
+                    // q.push(i);
                 }
             }
-        }
+        // }
         
     }
     
