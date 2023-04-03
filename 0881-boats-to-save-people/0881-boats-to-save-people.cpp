@@ -10,11 +10,10 @@ public:
         while(left<=right){
             if(p[left] + p[right] <= limit){
                 left++;
-                right--;
+                // right--;
             }
-            else{
-                right--;
-            }
+            
+            right--;
             ans++;
         }
         return ans;
