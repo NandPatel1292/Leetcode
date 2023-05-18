@@ -4,11 +4,22 @@
  */
 var createCounter = function(init) {
     let x = init;
-    return{
-        increment : () => ++x,
-        decrement : () => --x,
-        reset : () => (x = init),
-    }
+    return new Proxy({},{
+        get : (target,key) => {
+            if(key === "increment"){
+                return () => ++x;
+            }
+            else if(key === "decrement"){
+                return () => --x;
+            }
+            else if(key === "reset"){
+                return () => (x = init);
+            }
+            else{
+                throw new Error("nikal kutariya");
+            }
+        }
+    })
 };
 
 /**
