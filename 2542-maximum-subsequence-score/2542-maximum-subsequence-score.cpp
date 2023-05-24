@@ -19,20 +19,20 @@ public:
             pq.pop();
         }
         
-        priority_queue<int> tp;
+        priority_queue<int,vector<int>, greater<int>> tp;
         for(int i = 0; i<k-1; i++){
-            tp.push(-ans1[i]);
+            tp.push(ans1[i]);
             sum += ans1[i];
         }
         
         for(int i = k-1; i<nums1.size(); i++){
             res = max(res,ans2[i]*(sum + ans1[i]));
             
-            tp.push(-ans1[i]);
+            tp.push(ans1[i]);
             sum += ans1[i];
             
             if(tp.size() == k){
-                sum -= (-tp.top());
+                sum -= (tp.top());
                 tp.pop();
             }
         }
