@@ -13,7 +13,7 @@ var compose = function(functions) {
         
 //       return ans;
         
-        return functions.reduceRight((acc,f) => f(acc),x);
+        return functions.reduceRight((acc,cur) => cur(acc),x);
     };
 };
 
