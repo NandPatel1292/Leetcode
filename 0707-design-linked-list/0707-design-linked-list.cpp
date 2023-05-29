@@ -1,42 +1,98 @@
+class node{
+public:
+    int val;
+    node* next;
+    node(int x){
+        val = x;
+        next = nullptr;
+    }
+};
+
 class MyLinkedList {
 public:
-    vector<int> v;
+    node* head;
+    int size;
+    
     MyLinkedList() {
-        
+        head = nullptr;
+        size = 0;
     }
     
     int get(int index) {
-        for(int i = 0; i<v.size(); i++){
-            if(i == index){
-                return v[i];
-            }
+        if(index >= size || index < 0){
+            return -1;
+        } 
+        node* tmp = head;;
+        for(int i = 0; i<index; i++){
+            tmp = tmp->next;
         }
-        return -1;
-
+        return tmp->val;
     }
     
     void addAtHead(int val) {
-        v.insert(v.begin(),val);
+        addAtIndex(0,val);
     }
     
     void addAtTail(int val) {
-        v.push_back(val);
+        addAtIndex(size,val);
     }
     
     void addAtIndex(int index, int val) {
-        if(index < v.size()){
-            v.insert(v.begin()+index,val);
+        if(index > size || index < 0){
+            return;
         }
-        else if(index == v.size()){
-            v.push_back(val);
+        node* tmp = head;
+        node* nv = new node(val);
+        
+        if(index == 0){
+            nv -> next = tmp;
+            head = nv;
         }
+        
+        else{
+            for(int i = 0; i<index-1; i++){
+                tmp = tmp->next;
+            }
+            nv->next = tmp->next;
+            tmp->next = nv;
+        }
+        size++;
     }
     
     void deleteAtIndex(int index) {
-        if(index < v.size()){
-            v.erase(v.begin()+index);
+        if(index >= size || index < 0){
+            return;
         }
+        if(index == 0){
+            node* nv = head->next;
+            delete head;
+            head = nv;
+        }
+        
+        else{
+            node* tmp = head;
+            for(int i = 0; i<index - 1; i++){
+                tmp = tmp->next;
+            }
+            node* nx = tmp->next->next;
+            delete tmp->next;
+            tmp->next = nx;
+          
+        }
+        size--;
     }
+    
+    // ~MyLinkedList()
+    // {
+    //     node *p = head;
+    //     // Delete node at head while head is not null
+    //     while (head!=nullptr)
+    //     {
+    //         head= head->next;
+    //         delete p;
+    //         p=head;
+    //     }
+    // }
 };
 
 /**
