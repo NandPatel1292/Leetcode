@@ -82,17 +82,17 @@ public:
         size--;
     }
     
-    // ~MyLinkedList()
-    // {
-    //     node *p = head;
-    //     // Delete node at head while head is not null
-    //     while (head!=nullptr)
-    //     {
-    //         head= head->next;
-    //         delete p;
-    //         p=head;
-    //     }
-    // }
+    ~MyLinkedList()
+    {
+        node *p = head;
+        // Delete node at head while head is not null
+        while (head!=nullptr)
+        {
+            head= head->next;
+            delete p;
+            p=head;
+        }
+    }
 };
 
 /**
