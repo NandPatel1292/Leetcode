@@ -2,7 +2,7 @@ class Solution {
 public:
     void solve(vector<int>n, vector<vector<int>>&ans, vector<int>tmp){
         if(n.size() == 0){
-            // ans.push_back(tmp);
+            ans.push_back(tmp);
             return;
         }
            
@@ -15,7 +15,7 @@ public:
         tmp.push_back(x);
         solve(n,ans,tmp);
         
-        ans.push_back(tmp);
+        // ans.push_back(tmp);
         
 //         tmp.push_back(n[0]);
 //         solve(n,ans,tmp);
@@ -30,7 +30,7 @@ public:
         vector<vector<int>> ans;
         // int sz = nums.size();
         vector<int> tmp;
-        ans.push_back(tmp);
+        // ans.push_back(tmp);
         solve(nums,ans,tmp);
         
         return ans;
