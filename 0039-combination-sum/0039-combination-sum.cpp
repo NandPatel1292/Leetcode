@@ -12,6 +12,9 @@ public:
         if(c[ind] <= t){
             op.push_back(c[ind]);
             solve(ind,c,op,t-c[ind],ans);
+            while(ind<c.size()-1 && c[ind]==c[ind+1]){
+                ind++;                
+            }
             op.pop_back();
         }
         
