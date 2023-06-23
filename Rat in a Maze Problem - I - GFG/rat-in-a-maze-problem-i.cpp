@@ -46,13 +46,38 @@ class Solution{
         }
     }
     
+    void solve2(int i, int j,vector<vector<int>>&m, vector<string>&ans, vector<vector<int>>&visit, string op, int n,vector<int>di,vector<int>dj){
+        if(i == n-1 && j == n-1){
+            ans.push_back(op);
+            return;
+        }
+        
+        string dir = "DLRU";
+        for(int k = 0; k<4; k++){
+            int ni = i + di[k];
+            int nj = j + dj[k];
+            
+            if(ni >=0 && nj>=0 && ni<n && nj <n && visit[ni][nj] == 0 && m[ni][nj] == 1){
+                visit[i][j] = 1;
+                solve2(ni,nj,m,ans,visit,op+dir[k],n,di,dj);
+                visit[i][j] = 0;
+            }
+        }
+    }
+    
     vector<string> findPath(vector<vector<int>> &m, int n) {
         // Your code goes here
         vector<string>ans;
         vector<vector<int>>visit(n,vector<int>(n,0));
         string op = "";
+        // if(m[0][0] == 1){
+        //     solve(0,0,m,ans,visit,op,n);
+        // }
+        
+        vector<int>di = {1,0,0,-1};
+        vector<int>dj = {0,-1,1,0};
         if(m[0][0] == 1){
-            solve(0,0,m,ans,visit,op,n);
+            solve2(0,0,m,ans,visit,op,n,di,dj);
         }
         
         return ans;
