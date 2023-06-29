@@ -24,7 +24,7 @@ public:
     int findTargetSumWays_helper(vector<int>nums,int s)
     {
         int n=nums.size();
-        vector<vector<int>>dp(n+1,vector<int>(s+1,-1));
+        vector<vector<int>>dp(n+1,vector<int>(s+1));
         for(int i=0;i<=n;i++) dp[i][0]=1;
         for(int j=1;j<=s;j++) dp[0][j]=0;
 
