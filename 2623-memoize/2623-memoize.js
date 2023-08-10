@@ -2,7 +2,7 @@
  * @param {Function} fn
  */
 function memoize(fn) {
-    let cache = {};
+    let cache = [];
     return function(...args) {
         let n = JSON.stringify(args);
         if(n in cache){
@@ -16,6 +16,19 @@ function memoize(fn) {
     }
 }
 
+
+ // let cache = {};
+    // return function(...args) {
+    //     let n = JSON.stringify(args);
+    //     if(n in cache){
+    //         return cache[n];
+    //     }
+    //     else{
+    //         let res = fn(...args);
+    //         cache[n] = res;
+    //         return res;
+    //     }
+    // }
 
 /** 
  * let callCount = 0;
