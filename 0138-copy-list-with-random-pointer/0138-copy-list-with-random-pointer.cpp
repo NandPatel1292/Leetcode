@@ -49,13 +49,13 @@ public:
         
         
         unordered_map<Node*, Node*>mp;
-        while(n){
+        while(n != NULL){
             mp[n] = new Node(n->val);
             n = n->next;
         }
         
         n = head;
-        while(n){
+        while(n != NULL){
             mp[n]->next = mp[n->next];
             mp[n]->random = mp[n->random];
             n = n->next;
