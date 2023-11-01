@@ -25,11 +25,6 @@ public:
         vector<int>ans;
         solve(root,ans);
         
-        int tmp;
-        for(int i = 0; i<k; i++){
-            tmp = ans[i];
-        }
-        
-        return tmp;
+        return ans[k-1];
     }
 };
