@@ -38,17 +38,39 @@ public:
         solve2(ind+1,tmp,n,ans);
     }
     
+    
     vector<vector<int>> subsets(vector<int>& nums) {
+//         solve 1
         // vector<vector<int>> ans;
         // // int sz = nums.size();
         // vector<int> tmp;
         // // ans.push_back(tmp);
         // solve(nums,ans,tmp);
+        // return ans;
         
+//         solve 2
+        // vector<vector<int>>ans;
+        // vector<int>tmp;
+        
+        // solve2(0,tmp,nums,ans);
+        // return ans;
+        
+        
+//         solve 3
         vector<vector<int>>ans;
-        vector<int>tmp;
+        int n = nums.size();
         
-        solve2(0,tmp,nums,ans);
+        ans.push_back({});
+        
+        for(int i = 0; i<n; i++){
+            
+            int s = ans.size();
+            for(int j = 0; j<s; j++){
+                vector<int> tmp = ans[j];
+                tmp.push_back(nums[i]);
+                ans.push_back(tmp);
+            }
+        }
         
         return ans;
     }
